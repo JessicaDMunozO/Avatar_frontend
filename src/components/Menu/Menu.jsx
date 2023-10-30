@@ -2,9 +2,17 @@ import React from 'react'
 import logo from '../../images/Logo.png'
 import '../../components/Menu/Menu.css'
 
+import { useMsal } from "@azure/msal-react"
+
 import { Link } from 'react-router-dom'
 
 const Menu = () => {
+    const { instance } = useMsal()
+
+    const handleLogout = () => {
+        instance.logout({postLogoutRedirectUri: "/",})   // Log out with Azure authentication
+    }
+
     return (
         <div className='container-menu'>
             <div className='row'>
@@ -40,10 +48,10 @@ const Menu = () => {
                                 </a>
                             </li>
                             <li class="nav-item text-white my-1">
-                                <Link to ="/" class="nav-link " aria-current="page">
+                                <a class="nav-link " aria-current="page" onClick={handleLogout}>
                                     <i className='bi bi-toggle2-off'></i>
                                     <span className='ms-2 text-white'>Log out</span>
-                                </Link>
+                                </a>
                             </li>
                         </ul>
                     </div>
