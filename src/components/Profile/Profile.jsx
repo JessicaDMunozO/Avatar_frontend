@@ -36,17 +36,11 @@ const Profile = () => {
                     <div className='email'>
                         <p>Email</p>
                     </div>
-                    <div className='birthdate'>
-                        <p>Bithdate</p> 
-                    </div>
                     <div className='phone'>
                         <p>Phone number</p>
                     </div>
                     <div className='wallet'>
                         <p>Wallet ID</p>
-                    </div>
-                    <div className='date'>
-                        <p>Account creation date</p>
                     </div>
                 </div>
             </div>
