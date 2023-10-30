@@ -7,11 +7,14 @@ import Menu from './components/Menu/Menu'
 import Profile from './components/Profile/Profile'
 import MainPage from './components/MainPage/MainPage'
 
+import { AuthenticatedTemplate } from "@azure/msal-react"
+
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link } from 'react-router-dom'
+    Link
+} from 'react-router-dom'
 
 const App = () => {
     return (
@@ -21,14 +24,16 @@ const App = () => {
                     <Route exact path="/">
                         <Login />
                     </Route>
-                    <Route path="/mainPage">
-                        <Menu />
-                        <MainPage />
-                    </Route>
-                    <Route path="/profile">
-                        <Menu />
-                        <Profile />
-                    </Route>
+                    <AuthenticatedTemplate>
+                        <Route path="/mainPage">
+                            <Menu />
+                            <MainPage />
+                        </Route>
+                        <Route path="/profile">
+                            <Menu />
+                            <Profile />
+                        </Route>
+                    </AuthenticatedTemplate>
                 </Switch>
             </Router>
         </main>
