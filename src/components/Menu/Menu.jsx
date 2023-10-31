@@ -24,10 +24,10 @@ const Menu = () => {
                         <hr className='text-white d-none d-sm-block'></hr>
                         <ul class="nav nav-pills flex-column" id='parentM'>
                             <li class="nav-item text-white my-1">
-                                <a href="#" class="nav-link " aria-current="page">
+                                <Link to="/mainPage" class="nav-link " aria-current="page">
                                     <i className='bi bi-cash-coin'></i>
                                     <span className='ms-2 text-white'>Cryptos</span>
-                                </a>
+                                </Link>
                             </li>
                             <li class="nav-item text-white my-1">
                                 <a href="#" class="nav-link " aria-current="page">
@@ -59,7 +59,7 @@ const Menu = () => {
                         <Link to = "/profile" class="btn btn-primary text-white" type="button" id="triggerId" aria-haspopup="true"
                                 aria-expanded="false">
                                     <i className='bi bi-person fs-4'></i>
-                                    <span className='fs-4 ms-3'>Profile</span>
+                                    <span className='fs-4 ms-3'>Profile </span>
                                 </Link>
                     </div>
                 </div>
