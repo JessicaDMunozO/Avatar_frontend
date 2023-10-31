@@ -21,10 +21,10 @@ const Profile = (props) => {
         axios.get(baseURL).then((response) => {
             data = response.data
             setPost(data)
-        });
-    }, []);
+        })
+    }, [])
 
-    if (!post) return null;
+    if (!post) return null
 
     return (
         <div class="e-card playing">
