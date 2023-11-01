@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import axios from 'axios'
 
@@ -44,12 +44,47 @@ const MainPage = () => {
         })
     }, [])
 
+    let coinsFalse=new Object();
+     //console.log(coinsFalse);
+    //selectedCoins(coinsFalse)
+    const [selectedCoins, setSelectedCoins] = useState({
+        coinsFalse  
+    });
+    
+   
+
+   const [filterCoins, setFilterCoins] = useState(
+    []);
+
     if (!post) return null
 
-    // Checkbox per coin
+    
+    post[0].cryptocurrencies.forEach((coin) => {
+             coinsFalse[coin.name]=false;
+     })
+
+    const handleOnCheckbox =(e)=>{
+        setSelectedCoins({
+            ...selectedCoins, 
+            [e.target.value]: e.target.checked, 
+        })
+        if(e.target.checked){
+            const coinsResult= post[0].cryptocurrencies.filter(item=> item.name===e.target.value);
+            setFilterCoins([
+                ...filterCoins, 
+                ...coinsResult
+            ]) 
+        }else{
+            const coinsResult= filterCoins.filter(item=> item.name!==e.target.value);
+            setFilterCoins([...coinsResult])
+        }  
+    };
+    console.log(filterCoins)
+
+    // Checkbox per coin 
     const cryptos = post[0].cryptocurrencies.map((coin) => (
         <label class="checkbox-label">
-            <input type="checkbox" class="checkbox" />
+            <input type="checkbox" class="checkbox" value={coin.name} id={coin.name} onChange={handleOnCheckbox}/>
             <div class="svg-icon">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +93,7 @@ const MainPage = () => {
                 >
                     <path
                         d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"
-                    ></path>
+                    ></path> 
                 </svg>
             </div>
             <span class="containerCheckbox"></span>
@@ -67,10 +102,21 @@ const MainPage = () => {
     ))
 
     // Array with cryptos name
-    const cryptos_name = post[0].cryptocurrencies.map((coin) => (coin.name))
+    let cryptos_name=[]
+    let cryptos_value =[]
+    if(filterCoins.length===0){
+        cryptos_name = post[0].cryptocurrencies.map((coin) => (coin.name))
+        cryptos_value = post[0].cryptocurrencies.map((coin) => (coin.value))
 
+    }else{
+        cryptos_name= filterCoins.map((coin) => (coin.name))
+        cryptos_value = filterCoins.map((coin) => (coin.value))
+    }
+    
     // Array with cryptos values
-    const cryptos_value = post[0].cryptocurrencies.map((coin) => (coin.value))
+    
+
+    
 
     // Bars chart
     var my_data = {
@@ -112,7 +158,7 @@ const MainPage = () => {
             <div className='cryptos'>
                 {cryptos}
             </div>
-            <div className="chart">
+            <div className="chart" >
                 <Bar data={my_data} options={my_options}></Bar>
             </div>
         </div>
