@@ -146,8 +146,10 @@ const MainPage = () => {
             },
             x: {
                 ticks: { color: 'rgb(0, 40, 143, 1)' }
-            }
-        }
+            } 
+        },
+        barThickness: 55,
+        
     }
 
     return (
