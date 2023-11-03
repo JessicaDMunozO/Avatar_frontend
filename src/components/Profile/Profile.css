@@ -76,7 +76,7 @@
   .information {
     width: 900px;
     height: 530px;
-    font-family: "Segoe UI";
+    font-family: sans-serif;
     font-size: 25px;
     text-align: left;
     display: flex;
