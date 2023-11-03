@@ -16,7 +16,7 @@ import {
     Tooltip,
     Legend,
     Filler,
-} from 'chart.js';
+} from 'chart.js'
 
 ChartJS.register(
     CategoryScale,
@@ -27,11 +27,11 @@ ChartJS.register(
     Tooltip,
     Legend,
     Filler
-);
+)
 
 const MainPage = () => {
     const baseURL = "http://localhost:4444/db/cryptos_last"
-    var data = ""
+    let data = ""
 
     // Stored request response
     const [post, setPost] = React.useState(null)
@@ -44,21 +44,17 @@ const MainPage = () => {
         })
     }, [])
 
-    let coinsFalse=new Object();
-     //console.log(coinsFalse);
-    //selectedCoins(coinsFalse)
+    let coinsFalse=new Object()
+    
     const [selectedCoins, setSelectedCoins] = useState({
         coinsFalse  
-    });
+    })
     
-   
-
    const [filterCoins, setFilterCoins] = useState(
-    []);
+    [])
 
     if (!post) return null
 
-    
     post[0].cryptocurrencies.forEach((coin) => {
              coinsFalse[coin.name]=false;
      })
@@ -78,12 +74,11 @@ const MainPage = () => {
             const coinsResult= filterCoins.filter(item=> item.name!==e.target.value);
             setFilterCoins([...coinsResult])
         }  
-    };
-    console.log(filterCoins)
+    }
 
     // Checkbox per coin 
     const cryptos = post[0].cryptocurrencies.map((coin) => (
-        <label class="checkbox-label">
+        <label class="checkbox-label" key={coin.name}>
             <input type="checkbox" class="checkbox" value={coin.name} id={coin.name} onChange={handleOnCheckbox}/>
             <div class="svg-icon">
                 <svg
@@ -101,7 +96,7 @@ const MainPage = () => {
         </label>
     ))
 
-    // Array with cryptos name
+    // Array with cryptos name and values
     let cryptos_name=[]
     let cryptos_value =[]
     if(filterCoins.length===0){
@@ -112,14 +107,9 @@ const MainPage = () => {
         cryptos_name= filterCoins.map((coin) => (coin.name))
         cryptos_value = filterCoins.map((coin) => (coin.value))
     }
-    
-    // Array with cryptos values
-    
-
-    
 
     // Bars chart
-    var my_data = {
+    let my_data = {
         labels: cryptos_name,
         datasets: [
             {
@@ -130,7 +120,7 @@ const MainPage = () => {
         ]
     }
 
-    var my_options = {
+    let my_options = {
         responsive: true,
         animation: false,
         plugins: {
@@ -153,14 +143,14 @@ const MainPage = () => {
     }
 
     return (
-        <div className='component-specific'>
-            <div className='title'>
+        <div class='component-specific'>
+            <div class='title'>
                 <h1>Top 10 cryptos today</h1>
             </div>
-            <div className='cryptos'>
+            <div class='cryptos'>
                 {cryptos}
             </div>
-            <div className="chart" >
+            <div class="chart" >
                 <Bar data={my_data} options={my_options}></Bar>
             </div>
         </div>

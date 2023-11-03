@@ -11,7 +11,7 @@ import '../../components/Profile/Profile.css'
 const Profile = (props) => {
     const email = props.graphData.userPrincipalName
     const baseURL = "http://localhost:4444/db/user/" + email
-    var data = ""
+    let data = ""
 
     // Stored request response
     const [post, setPost] = React.useState(null)
