@@ -76,12 +76,15 @@
   .information {
     width: 900px;
     height: 530px;
-    font-family: sans-serif;
+    font-family: "Segoe UI";
+    font-size: 25px;
     text-align: left;
     display: flex;
     flex-direction: column;
     justify-content:space-around;
     margin: auto auto auto 40px;
+    color:#ffffff;
   }
+
 
 
