@@ -1,8 +1,31 @@
 import React from 'react'
 
+import axios from 'axios'
+
 import '../../components/Profile/Profile.css'
 
-const Profile = () => {
+/**
+ * Renders information about the user obtained from MS Graph
+ * @param props 
+ */
+const Profile = (props) => {
+    const email = props.graphData.userPrincipalName
+    const baseURL = "http://localhost:4444/db/user/" + email
+    let data = ""
+
+    // Stored request response
+    const [post, setPost] = React.useState(null)
+
+    // GET request
+    React.useEffect(() => {
+        axios.get(baseURL).then((response) => {
+            data = response.data
+            setPost(data)
+        })
+    }, [])
+
+    if (!post) return null
+
     return (
         <div class="e-card playing">
             <div class="image"></div>
@@ -31,22 +54,13 @@ const Profile = () => {
 
                 <div className='information'>
                     <div className='name'>
-                        <p>Name</p>
+                        <p><strong>Name: </strong> {props.graphData.displayName}</p>
                     </div>
                     <div className='email'>
-                        <p>Email</p>
-                    </div>
-                    <div className='birthdate'>
-                        <p>Bithdate</p> 
-                    </div>
-                    <div className='phone'>
-                        <p>Phone number</p>
+                        <p><strong>Email: </strong> {props.graphData.userPrincipalName}</p>
                     </div>
                     <div className='wallet'>
-                        <p>Wallet ID</p>
-                    </div>
-                    <div className='date'>
-                        <p>Account creation date</p>
+                        <p><strong>Wallet ID: </strong> {post[0]._id}</p>
                     </div>
                 </div>
             </div>
