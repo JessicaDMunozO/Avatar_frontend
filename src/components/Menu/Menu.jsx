@@ -42,10 +42,10 @@ const Menu = () => {
                                 </a>
                             </li>
                             <li class="nav-item text-white my-1">
-                                <a href="#" class="nav-link " aria-current="page">
+                                <Link to = "/wallet" class="nav-link " aria-current="page">
                                     <i className='bi bi-wallet2'></i>
                                     <span className='ms-2 text-white'>Wallet</span>
-                                </a>
+                                </Link>
                             </li>
                             <li class="nav-item text-white my-1">
                                 <a class="nav-link " aria-current="page" onClick={handleLogout}>
