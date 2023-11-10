@@ -26,3 +26,15 @@ body {
   justify-content: flex-start;
   align-items: center;
 }
+
+.component-specific-wallet {
+  width: 1350px;
+  height: 590px;
+  padding-top: 20px;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: auto auto auto 100px;
+}
