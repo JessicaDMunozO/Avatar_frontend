@@ -29,7 +29,7 @@
     font-size: 2em;
     color: #2e2e2e;
     font-weight: 700;
-    margin: 5px 0 10px 0;
+    margin: 100px 0 10px 0;
     z-index: 2;
   }
   
@@ -56,15 +56,15 @@
   
   .logo {
     position: absolute;
-    top: 12%;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
   }
   
   img {
-    width: 80px;
-    height: 80px;
+    width: 150px;
+    height: 150px;
   }
 
   /*  Adjust elements size dependeing on screen */
