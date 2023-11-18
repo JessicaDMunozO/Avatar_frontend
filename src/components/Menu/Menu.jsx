@@ -30,10 +30,10 @@ const Menu = () => {
                                 </Link>
                             </li>
                             <li class="nav-item text-white my-1">
-                                <a href="#" class="nav-link " aria-current="page">
+                                <Link to = "/buy" class="nav-link " aria-current="page">
                                     <i className='bi bi-shop'></i>
                                     <span className='ms-2 text-white'>Buy Crypto</span>
-                                </a>
+                                </Link>
                             </li>
                             <li class="nav-item text-white my-1">
                                 <a href="#" class="nav-link " aria-current="page">
