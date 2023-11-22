@@ -8,6 +8,7 @@ import Profile from './components/Profile/Profile'
 import MainPage from './components/MainPage/MainPage'
 import Wallet from './components/Wallet/Wallet'
 import BuyCrypto from './components/BuyCrypto/BuyCrypto'
+import Payments from './components/Payments/Payments'
 
 import { AuthenticatedTemplate, useMsal } from "@azure/msal-react"
 import { loginRequest } from "./authConfig";
@@ -105,6 +106,9 @@ const App = () => {
                         <Route path="/buy">
                             <Menu />
                             <UserData />
+                        </Route>
+                        <Route path="/payments">
+                            <Payments/>
                         </Route>
                         <Route path="/profile">
                             <Menu />
