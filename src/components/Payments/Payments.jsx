@@ -5,25 +5,41 @@ import '../../components/Payments/Payments.css'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import {useHistory} from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
+import axios from "axios";
 
-const Payments = () => {
+const Payments =  (props) => {
 
-    const history= useHistory();
-    const showSwal = () => {
+   
+    let {offerId}=useParams()
+    console.log(offerId)
+    console.log(props)
+    const history = useHistory();
+    const showSwal = async () => {
+        const baseURL = "http://localhost:4444/db/offers/buy"
+        let email = props.graphData.userPrincipalName
+
+        const json = JSON.stringify({ "offer": offerId, "buyer": email });
+        const res = await axios.post(baseURL, json, {
+            headers: {
+                // Overwrite Axios's automatically set Content-Type
+                'Content-Type': 'application/json'
+            }
+        });
         withReactContent(Swal).fire({
-          title: "Excellent",
-          text: "Purchase completed successfully",
-          icon: "success",
-          timer: 10000
+            title: "Excellent",
+            text: "Purchase completed successfully",
+            icon: "success",
+            timer: 10000
         }).then(
-            function(){
+            function () {
+
                 history.push('/buy')
                 console.log("prueba")
             }
         )
-       
-      }
+
+    }
 
     return (
 

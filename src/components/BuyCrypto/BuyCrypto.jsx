@@ -6,6 +6,7 @@ import '../../components/BuyCrypto/BuyCrypto.css'
 
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Payments from '../Payments/Payments'
 
 /**
  * Renders information about the user obtained from MS Graph
@@ -41,7 +42,8 @@ const BuyCrypto = (props) => {
     let price = ""
     let crypto = ""
     let amount = ""
-
+    let offerId=""
+    let pasarDatos=""
     // Input to filter offers
     const filterOffer =
         <div class="group">
@@ -59,8 +61,8 @@ const BuyCrypto = (props) => {
         price = filteredOffer.Price,
         crypto = filteredOffer.cryptocurrency,
         amount = filteredOffer.amount,
-
-        <div class="cardOffer">
+        offerId=filteredOffer.offer_id,
+        <div class="cardOffer" key={filteredOffer.offer_id}>
             <p class="seller">
                 <span><strong >Seller: </strong> {seller} </span>
             </p>
@@ -78,7 +80,7 @@ const BuyCrypto = (props) => {
                     <span><strong >Price: </strong> {price} </span>
                 </li>
             </ul>
-            <Link to="/payments" class="action">
+            <Link to={`/payments/${offerId}`} class="action">
                 Buy
             </Link>
         </div >
@@ -92,6 +94,7 @@ const BuyCrypto = (props) => {
             <div class="class-Buycrypto">
                 {filterOffers}
             </div>
+            
         </div>
     )
 }

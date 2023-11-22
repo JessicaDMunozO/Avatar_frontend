@@ -86,6 +86,28 @@ const UserData = () => {
     )
 }
 
+// user data
+const UserDataPayment = () => {
+    const { instance, accounts } = useMsal()
+    const [graphData, setGraphData] = useState(null)
+
+    function RequestProfileData() {
+        // Silently acquires an access token which is then attached to a request for MS Graph data
+        instance.acquireTokenSilent({
+            ...loginRequest,
+            account: accounts[0]
+        }).then((response) => {
+            callMsGraph(response.accessToken).then(response => setGraphData(response))
+        })
+    }
+
+    return (
+        <>
+            {graphData ? <Payments graphData={graphData} /> : RequestProfileData()}
+        </>
+    )
+}
+
 const App = () => {
     return (
         <main>
@@ -107,8 +129,8 @@ const App = () => {
                             <Menu />
                             <UserData />
                         </Route>
-                        <Route path="/payments">
-                            <Payments/>
+                        <Route path="/payments/:offerId">
+                            <UserDataPayment/>
                         </Route>
                         <Route path="/profile">
                             <Menu />
