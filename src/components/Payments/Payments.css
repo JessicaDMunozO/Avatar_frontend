@@ -173,3 +173,10 @@
   .swal-wide{
     height: 1000px !important;
   }
+  .bodyLogin {
+    height: 100vh;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

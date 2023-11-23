@@ -42,8 +42,8 @@ const Payments =  (props) => {
     }
 
     return (
-
-        <div className="modalPayment">
+        <div className='bodyLogin'>
+             <div className="modalPayment">
             <div className="formPayment">
                 <div className="paymentOptions">
                     <button name="paypal" type="button">
@@ -118,14 +118,16 @@ const Payments =  (props) => {
                         </div>
                     </div>
                 </div>
-                <div classNameName='d-flex justify-content-around'>
-                    <button className="purchaseBtnAccept" onClick={showSwal}>Accept</button>
-                    <Link to="/buy" className="purchaseBtnCancel">
+                <div class='d-flex justify-content-around'>
+                    <button class="purchaseBtnAccept" onClick={showSwal}>Accept</button>
+                    <Link to="/buy" class="purchaseBtnCancel">
                         Cancel
                     </Link>
                 </div>
             </div>
         </div>
+        </div>
+       
     )
 }
 
