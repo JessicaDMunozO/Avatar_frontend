@@ -14,16 +14,18 @@ const Login = () => {
     }
 
     return (
-        <form class="form_main">
-            <div class="logo">
-                <img src={logo}></img>
-            </div>
-            <p class="heading">Login to Na'vi</p>
-            {/*Redirect to Main Page */}
-            <Link to="/mainPage">
-                <button id="button" onClick={handleLogin}>Log in</button>
-            </Link>
-        </form>
+        <div className='bodyLogin'>
+             <form className="form_main">
+                <div className="logo">
+                    <img src={logo}></img>
+                </div>
+                <p className="heading">Login to Na'vi</p>
+                {/*Redirect to Main Page */}
+                <Link to="/mainPage">
+                    <button id="button" onClick={handleLogin}>Log in</button>
+                </Link>
+            </form>
+        </div>         
     )
 }
 

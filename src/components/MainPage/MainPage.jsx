@@ -78,9 +78,9 @@ const MainPage = () => {
 
     // Checkbox per coin 
     const cryptos = post[0].cryptocurrencies.map((coin) => (
-        <label class="checkbox-label" key={coin.name}>
-            <input type="checkbox" class="checkbox" value={coin.name} id={coin.name} onChange={handleOnCheckbox}/>
-            <div class="svg-icon">
+        <label className="checkbox-label" key={coin.name}>
+            <input type="checkbox" className="checkbox" value={coin.name} id={coin.name} onChange={handleOnCheckbox}/>
+            <div className="svg-icon">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="1em"
@@ -91,7 +91,7 @@ const MainPage = () => {
                     ></path> 
                 </svg>
             </div>
-            <span class="containerCheckbox"></span>
+            <span className="containerCheckbox"></span>
             {coin.name}
         </label>
     ))
@@ -143,14 +143,14 @@ const MainPage = () => {
     }
 
     return (
-        <div class='component-specific'>
-            <div class='title'>
+        <div className='component-specific'>
+            <div className='title'>
                 <h1>Top 10 cryptos today</h1>
             </div>
-            <div class='cryptos'>
+            <div className='cryptos'>
                 {cryptos}
             </div>
-            <div class="chart" >
+            <div className="chart" >
                 <Bar data={my_data} options={my_options}></Bar>
             </div>
         </div>

@@ -27,14 +27,14 @@ const Profile = (props) => {
     if (!post) return null
 
     return (
-        <div class="e-card playing">
-            <div class="image"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
+        <div className="e-card playing">
+            <div className="image"></div>
+            <div className="wave"></div>
+            <div className="wave"></div>
+            <div className="wave"></div>
 
 
-            <div class="infotop">
+            <div className="infotop">
 
 
                 <path fill="currentColor" d="M19.4133 4.89862L14.5863 2.17544C12.9911 1.27485 11.0089 1.27485 9.41368 2.17544L4.58674
@@ -52,14 +52,14 @@ const Profile = (props) => {
    16.4783 14.8528C14.2136 14.8528 12.3781 16.6466 12.3781 18.8598C12.3781 19.3937 12.4861 19.9021 12.68
    20.3676C11.9347 20.5316 11.1396 20.4203 10.4684 20.0413H10.4676Z"></path><br />
 
-                <div className='information'>
-                    <div className='name'>
+                <div classNameName='information'>
+                    <div classNameName='name'>
                         <p><strong>Name: </strong> {props.graphData.displayName}</p>
                     </div>
-                    <div className='email'>
+                    <div classNameName='email'>
                         <p><strong>Email: </strong> {props.graphData.userPrincipalName}</p>
                     </div>
-                    <div className='wallet'>
+                    <div classNameName='wallet'>
                         <p><strong>Wallet ID: </strong> {post[0]._id}</p>
                     </div>
                 </div>

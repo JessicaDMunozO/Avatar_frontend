@@ -8,8 +8,8 @@ body {
   background-attachment: fixed;
 }
 
-body {
-  padding-top: 20px;
+.bodyLogin {
+  height: 100vh;
   user-select: none;
   display: flex;
   justify-content: center;

@@ -52,8 +52,9 @@ const Wallet = (props) => {
     ))
     let resultCryptos=""
     if(cryptos.length>0){
-       resultCryptos=<div class="component-specific-wallet">
-            <div class="card-total">
+       resultCryptos=<div >
+        <div className='filter'>
+        <div class="cardTotal">
                     <div class="title-wallet">
                         <span>
                             <svg width="20" fill="currentColor" height="20" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
@@ -74,9 +75,11 @@ const Wallet = (props) => {
                             </div>
                         </div>
                     </div>
-                </div>
+            </div>
+        </div>
+          
             
-            <div class="class-crypto">
+            <div class="classCrypto">
                 {cryptos}
             </div>
         </div>

@@ -43,9 +43,9 @@ const Payments =  (props) => {
 
     return (
 
-        <div class="modalPayment">
-            <div class="formPayment">
-                <div class="paymentOptions">
+        <div className="modalPayment">
+            <div className="formPayment">
+                <div className="paymentOptions">
                     <button name="paypal" type="button">
                         <svg space="preserve" viewBox="0 0 124 33" height="33px" width="124px" y="0px" x="0px" id="Layer_1" version="1.1" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
                             <path d="M46.211,6.749h-6.839c-0.468,0-0.866,0.34-0.939,0.802l-2.766,17.537c-0.055,0.346,0.213,0.658,0.564,0.658  h3.265c0.468,0,0.866-0.34,0.939-0.803l0.746-4.73c0.072-0.463,0.471-0.803,0.938-0.803h2.165c4.505,0,7.105-2.18,7.784-6.5  c0.306-1.89,0.013-3.375-0.872-4.415C50.224,7.353,48.5,6.749,46.211,6.749z M47,13.154c-0.374,2.454-2.249,2.454-4.062,2.454  h-1.032l0.724-4.583c0.043-0.277,0.283-0.481,0.563-0.481h0.473c1.235,0,2.4,0,3.002,0.704C47.027,11.668,47.137,12.292,47,13.154z" fill="#253B80"></path>
@@ -96,31 +96,31 @@ const Payments =  (props) => {
                         </svg>
                     </button>
                 </div>
-                <div class="separator">
-                    <hr class="line" />
+                <div className="separator">
+                    <hr className="line" />
                     <p>or pay using credit card</p>
-                    <hr class="line" />
+                    <hr className="line" />
                 </div>
-                <div class="credit-card-info--form">
-                    <div class="input_container">
-                        <label for="password_field" class="input_label">Card holder full name</label>
-                        <input id="password_field" class="input_field" type="text" name="input-name" title="Inpit title" placeholder="Enter your full name" />
+                <div className="credit-card-info--form">
+                    <div className="input_container">
+                        <label for="password_field" className="input_label">Card holder full name</label>
+                        <input id="password_field" className="input_field" type="text" name="input-name" title="Inpit title" placeholder="Enter your full name" />
                     </div>
-                    <div class="input_container">
-                        <label for="password_field" class="input_label">Card Number</label>
-                        <input id="password_field" class="input_field" type="number" name="input-name" title="Inpit title" placeholder="0000 0000 0000 0000" />
+                    <div className="input_container">
+                        <label for="password_field" className="input_label">Card Number</label>
+                        <input id="password_field" className="input_field" type="number" name="input-name" title="Inpit title" placeholder="0000 0000 0000 0000" />
                     </div>
-                    <div class="input_container">
-                        <label for="password_field" class="input_label">Expiry Date / CVV</label>
-                        <div class="split">
-                            <input id="password_field" class="input_field" type="text" name="input-name" title="Expiry Date" placeholder="01/23" />
-                            <input id="password_field" class="input_field" type="number" name="cvv" title="CVV" placeholder="CVV" />
+                    <div className="input_container">
+                        <label for="password_field" className="input_label">Expiry Date / CVV</label>
+                        <div className="split">
+                            <input id="password_field" className="input_field" type="text" name="input-name" title="Expiry Date" placeholder="01/23" />
+                            <input id="password_field" className="input_field" type="number" name="cvv" title="CVV" placeholder="CVV" />
                         </div>
                     </div>
                 </div>
-                <div className='d-flex justify-content-around'>
-                    <button class="purchaseBtnAccept" onClick={showSwal}>Accept</button>
-                    <Link to="/buy" class="purchaseBtnCancel">
+                <div classNameName='d-flex justify-content-around'>
+                    <button className="purchaseBtnAccept" onClick={showSwal}>Accept</button>
+                    <Link to="/buy" className="purchaseBtnCancel">
                         Cancel
                     </Link>
                 </div>
