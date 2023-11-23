@@ -5,12 +5,13 @@ import axios from 'axios'
 import '../../components/Wallet/Wallet.css'
 import '../../App.css'
 
+import { Link } from 'react-router-dom'
+
 /**
  * Renders information about the user obtained from MS Graph
  * @param props 
  */
 const Wallet = (props) => {
-    console.log(props)
     const email = props.graphData.userPrincipalName
     const baseURL = "http://localhost:4444/db/user/" + email + "/balance"
     let data = ""
@@ -49,7 +50,7 @@ const Wallet = (props) => {
         </ul>
       </div>
     ))
-    let resultCryptos="";
+    let resultCryptos=""
     if(cryptos.length>0){
        resultCryptos=<div class="component-specific-wallet">
             <div class="card-total">
@@ -85,7 +86,9 @@ const Wallet = (props) => {
             <div class="cookieCard">
                 <p class="cookieHeading">Oops</p>
                 <p class="cookieDescription">You don´t have cryptos</p>
-                <button class="acceptButton">Buy Cryptos</button>
+                <Link to="/buy" class="acceptButton">
+                    Buy Cryptos
+                </Link>
             </div>
 
         </div>

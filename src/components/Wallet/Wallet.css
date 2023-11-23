@@ -144,7 +144,6 @@
     margin: auto auto auto 200px;
     position: relative;
     top: 10%;
-    
     gap: 40px;
 }
 
@@ -202,6 +201,7 @@
     cursor: pointer;
     font-weight: 600;
     z-index: 2;
+    text-decoration: none;
   }
   
   .acceptButton:hover {
