@@ -7,7 +7,7 @@
     margin-right: auto;
 }
 
-.checkbox-label {
+.checkboxLabel {
     font-size: 22px;
     color: #fefefe;
     padding: 10px 50px 10px 5px;
@@ -61,7 +61,7 @@
     background-color: #ffc8c8;
 }
 
-.svg-icon {
+.svgIcon {
     position: absolute;
     width: 25px;
     height: 25px;
@@ -75,7 +75,7 @@
     transition: ease-in 0.2s;
 }
 
-.checkbox:checked~.svg-icon {
+.checkbox:checked~.svgIcon {
     transform: rotate(360deg) scale(1);
     transition: ease-in 0.2s;
 }

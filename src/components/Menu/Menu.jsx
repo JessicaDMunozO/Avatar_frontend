@@ -22,33 +22,33 @@ const Menu = () => {
                             <img src={logo}/>
                         </a>
                         <hr className='text-white d-none d-sm-block'></hr>
-                        <ul class="nav nav-pills flex-column" id='parentM'>
-                            <li class="nav-item text-white my-1">
+                        <ul className="nav nav-pills flex-column" id='parentM'>
+                            <li className="nav-item text-white my-1">
                                 <Link to="/mainPage" class="nav-link " aria-current="page">
                                     <i className='bi bi-cash-coin'></i>
                                     <span className='ms-2 text-white'>Cryptos</span>
                                 </Link>
                             </li>
-                            <li class="nav-item text-white my-1">
+                            <li className="nav-item text-white my-1">
                                 <Link to = "/buy" class="nav-link " aria-current="page">
                                     <i className='bi bi-shop'></i>
                                     <span className='ms-2 text-white'>Buy Crypto</span>
                                 </Link>
                             </li>
-                            <li class="nav-item text-white my-1">
-                                <a href="#" class="nav-link " aria-current="page">
+                            <li className="nav-item text-white my-1">
+                                <a href="#" className="nav-link " aria-current="page">
                                     <i className='bi bi-cart-fill'></i>
                                     <span className='ms-2 text-white'>Sell Crypto</span>
                                 </a>
                             </li>
-                            <li class="nav-item text-white my-1">
+                            <li className="nav-item text-white my-1">
                                 <Link to = "/wallet" class="nav-link " aria-current="page">
                                     <i className='bi bi-wallet2'></i>
                                     <span className='ms-2 text-white'>Wallet</span>
                                 </Link>
                             </li>
-                            <li class="nav-item text-white my-1">
-                                <a class="nav-link " aria-current="page" onClick={handleLogout}>
+                            <li className="nav-item text-white my-1">
+                                <a className="nav-link " aria-current="page" onClick={handleLogout}>
                                     <i className='bi bi-toggle2-off'></i>
                                     <span className='ms-2 text-white'>Log out</span>
                                 </a>
