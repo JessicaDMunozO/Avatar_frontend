@@ -2,28 +2,29 @@ import React from 'react'
 
 import '../../components/Payments/Payments.css'
 
-import { Link } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import { useHistory, useParams } from 'react-router-dom'
 import axios from "axios";
+import PropTypes from 'prop-types'
 
 const Payments =  (props) => {
 
    
     let {offerId}=useParams()
-    console.log(offerId)
-    console.log(props)
     const history = useHistory();
     const showSwal = async () => {
         const baseURL = "http://localhost:4444/db/offers/buy"
         let email = props.graphData.userPrincipalName
-
+        let user = JSON.parse(sessionStorage.getItem('msal.token.keys.493fd410-634b-4cce-a120-fc0b5b5a0ff5'));
+        let idTokenP=JSON.parse(sessionStorage.getItem(user.idToken));
+        const token=idTokenP.secret
         const json = JSON.stringify({ "offer": offerId, "buyer": email });
-        const res = await axios.post(baseURL, json, {
+        await axios.post(baseURL, json, {
             headers: {
                 // Overwrite Axios's automatically set Content-Type
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "Authorization" : `Bearer ${token}`
             }
         });
         withReactContent(Swal).fire({
@@ -33,9 +34,7 @@ const Payments =  (props) => {
             timer: 10000
         }).then(
             function () {
-
                 history.push('/buy')
-                console.log("prueba")
             }
         )
 
@@ -79,7 +78,7 @@ const Payments =  (props) => {
                     </button>
                     <button name="google-pay" type="button">
                         <svg fill="none" viewBox="0 0 80 39" height="39" width="80" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_134_34)">
+                            <g clipPath="url(#clip0_134_34)">
                                 <path fill="#5F6368" d="M37.8 19.7V29H34.8V6H42.6C44.5 6 46.3001 6.7 47.7001 8C49.1001 9.2 49.8 11 49.8 12.9C49.8 14.8 49.1001 16.5 47.7001 17.8C46.3001 19.1 44.6 19.8 42.6 19.8L37.8 19.7ZM37.8 8.8V16.8H42.8C43.9 16.8 45.0001 16.4 45.7001 15.6C47.3001 14.1 47.3 11.6 45.8 10.1L45.7001 10C44.9001 9.2 43.9 8.7 42.8 8.8H37.8Z"></path>
                                 <path fill="#5F6368" d="M56.7001 12.8C58.9001 12.8 60.6001 13.4 61.9001 14.6C63.2001 15.8 63.8 17.4 63.8 19.4V29H61V26.8H60.9001C59.7001 28.6 58 29.5 56 29.5C54.3 29.5 52.8 29 51.6 28C50.5 27 49.8 25.6 49.8 24.1C49.8 22.5 50.4 21.2 51.6 20.2C52.8 19.2 54.5 18.8 56.5 18.8C58.3 18.8 59.7 19.1 60.8 19.8V19.1C60.8 18.1 60.4 17.1 59.6 16.5C58.8 15.8 57.8001 15.4 56.7001 15.4C55.0001 15.4 53.7 16.1 52.8 17.5L50.2001 15.9C51.8001 13.8 53.9001 12.8 56.7001 12.8ZM52.9001 24.2C52.9001 25 53.3001 25.7 53.9001 26.1C54.6001 26.6 55.4001 26.9 56.2001 26.9C57.4001 26.9 58.6 26.4 59.5 25.5C60.5 24.6 61 23.5 61 22.3C60.1 21.6 58.8 21.2 57.1 21.2C55.9 21.2 54.9 21.5 54.1 22.1C53.3 22.6 52.9001 23.3 52.9001 24.2Z"></path>
                                 <path fill="#5F6368" d="M80 13.3L70.1 36H67.1L70.8 28.1L64.3 13.4H67.5L72.2 24.7H72.3L76.9 13.4H80V13.3Z"></path>
@@ -101,26 +100,26 @@ const Payments =  (props) => {
                     <p>or pay using credit card</p>
                     <hr className="line" />
                 </div>
-                <div className="credit-card-info--form">
-                    <div className="input_container">
-                        <label for="password_field" className="input_label">Card holder full name</label>
-                        <input id="password_field" className="input_field" type="text" name="input-name" title="Inpit title" placeholder="Enter your full name" />
+                <div className="creditCardInfoForm">
+                    <div className="inputContainer">
+                        <label htmlFor="passwordField1" className="inputLabel">Card holder full name</label>
+                        <input id="passwordField1" className="inputField" type="text" name="inputName" title="Inpit title" placeholder="Enter your full name" />
                     </div>
-                    <div className="input_container">
-                        <label for="password_field" className="input_label">Card Number</label>
-                        <input id="password_field" className="input_field" type="number" name="input-name" title="Inpit title" placeholder="0000 0000 0000 0000" />
+                    <div className="inputContainer">
+                        <label htmlFor="passwordField2" className="inputLabel">Card Number</label>
+                        <input id="passwordField2" className="inputField" type="number" name="inputName" title="Inpit title" placeholder="0000 0000 0000 0000" />
                     </div>
-                    <div className="input_container">
-                        <label for="password_field" className="input_label">Expiry Date / CVV</label>
+                    <div className="inputContainer">
+                        <label htmlFor="passwordField" className="inputLabel">Expiry Date / CVV</label>
                         <div className="split">
-                            <input id="password_field" className="input_field" type="text" name="input-name" title="Expiry Date" placeholder="01/23" />
-                            <input id="password_field" className="input_field" type="number" name="cvv" title="CVV" placeholder="CVV" />
+                            <input id="passwordField" className="inputField" type="text" name="inputName" title="Expiry Date" placeholder="01/23" />
+                            <input id="passwordField" className="inputField" type="number" name="cvv" title="CVV" placeholder="CVV" />
                         </div>
                     </div>
                 </div>
-                <div class='d-flex justify-content-around'>
-                    <button class="purchaseBtnAccept" onClick={showSwal}>Accept</button>
-                    <Link to="/buy" class="purchaseBtnCancel">
+                <div className='d-flex justify-content-around'>
+                    <button className="purchaseBtnAccept" onClick={showSwal}>Accept</button>
+                    <Link to="/buy" className="purchaseBtnCancel">
                         Cancel
                     </Link>
                 </div>
@@ -132,5 +131,9 @@ const Payments =  (props) => {
 }
 
 
+Payments.propTypes={
+    graphData: PropTypes.shape({     
+        userPrincipalName: PropTypes.string.isRequired}).isRequired
 
+}
 export default Payments

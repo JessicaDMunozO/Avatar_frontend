@@ -38,7 +38,10 @@ const MainPage = () => {
 
     // GET request
     React.useEffect(() => {
-        axios.get(baseURL).then((response) => {
+        let user = JSON.parse(sessionStorage.getItem('msal.token.keys.493fd410-634b-4cce-a120-fc0b5b5a0ff5'));
+        let idTokenP=JSON.parse(sessionStorage.getItem(user.idToken));
+        const token=idTokenP.secret
+        axios.get(baseURL, { headers: {"Authorization" : `Bearer ${token}`} }).then((response) => {
             data = response.data
             setPost(data)
         })
@@ -78,9 +81,9 @@ const MainPage = () => {
 
     // Checkbox per coin 
     const cryptos = post[0].cryptocurrencies.map((coin) => (
-        <label className="checkbox-label" key={coin.name}>
+        <label className="checkboxLabel" key={coin.name}>
             <input type="checkbox" className="checkbox" value={coin.name} id={coin.name} onChange={handleOnCheckbox}/>
-            <div className="svg-icon">
+            <div className="svgIcon">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="1em"
@@ -143,7 +146,7 @@ const MainPage = () => {
     }
 
     return (
-        <div className='component-specific'>
+        <div className='componentSpecific'>
             <div className='title'>
                 <h1>Top 10 cryptos today</h1>
             </div>

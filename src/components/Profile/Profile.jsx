@@ -3,6 +3,7 @@ import React from 'react'
 import axios from 'axios'
 
 import '../../components/Profile/Profile.css'
+import PropTypes from 'prop-types'
 
 /**
  * Renders information about the user obtained from MS Graph
@@ -18,7 +19,10 @@ const Profile = (props) => {
 
     // GET request
     React.useEffect(() => {
-        axios.get(baseURL).then((response) => {
+        let user = JSON.parse(sessionStorage.getItem('msal.token.keys.493fd410-634b-4cce-a120-fc0b5b5a0ff5'));
+        let idTokenP=JSON.parse(sessionStorage.getItem(user.idToken));
+        const token=idTokenP.secret
+        axios.get(baseURL, { headers: {"Authorization" : `Bearer ${token}`} }).then((response) => {
             data = response.data
             setPost(data)
         })
@@ -52,14 +56,14 @@ const Profile = (props) => {
    16.4783 14.8528C14.2136 14.8528 12.3781 16.6466 12.3781 18.8598C12.3781 19.3937 12.4861 19.9021 12.68
    20.3676C11.9347 20.5316 11.1396 20.4203 10.4684 20.0413H10.4676Z"></path><br />
 
-                <div classNameName='information'>
-                    <div classNameName='name'>
+                <div className='information'>
+                    <div className='name'>
                         <p><strong>Name: </strong> {props.graphData.displayName}</p>
                     </div>
-                    <div classNameName='email'>
+                    <div className='email'>
                         <p><strong>Email: </strong> {props.graphData.userPrincipalName}</p>
                     </div>
-                    <div classNameName='wallet'>
+                    <div className='wallet'>
                         <p><strong>Wallet ID: </strong> {post[0]._id}</p>
                     </div>
                 </div>
@@ -67,5 +71,11 @@ const Profile = (props) => {
         </div>
     )
 }
+Profile.propTypes={
+    graphData: PropTypes.shape({     
+        userPrincipalName: PropTypes.string.isRequired, 
+        displayName: PropTypes.string.isRequired 
+    }).isRequired
 
+}
 export default Profile

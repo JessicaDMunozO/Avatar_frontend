@@ -16,7 +16,7 @@ body {
   align-items: center;
 }
 
-.component-specific {
+.componentSpecific {
   width: 1350px;
   height: 590px;
   padding-top: 20px;
@@ -27,7 +27,7 @@ body {
   align-items: center;
 }
 
-.component-specific-wallet {
+.componentSpecificWallet {
   width: 1350px;
   height: 590px;
   padding-top: 20px;

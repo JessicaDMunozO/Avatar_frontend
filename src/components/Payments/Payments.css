@@ -66,13 +66,13 @@
     margin: auto;
   }
   
-  .credit-card-info--form {
+  .creditCardInfoForm {
     display: flex;
     flex-direction: column;
     gap: 15px;
   }
   
-  .input_container {
+  .inputContainer {
     width: 100%;
     height: fit-content;
     display: flex;
@@ -90,13 +90,13 @@
     width: 100%;
   }
   
-  .input_label {
+  .inputLabel {
     font-size: 10px;
     color: #8B8E98;
     font-weight: 600;
   }
   
-  .input_field {
+  .inputField {
     width: auto;
     height: 40px;
     padding: 0 0 0 16px;
@@ -107,7 +107,7 @@
     transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
   }
   
-  .input_field:focus {
+  .inputField:focus {
     border: 1px solid transparent;
     box-shadow: 0px 0px 0px 2px #242424;
     background-color: transparent;
@@ -161,13 +161,13 @@
   }
   
   /* Reset input number styles */
-  .input_field::-webkit-outer-spin-button,
-  .input_field::-webkit-inner-spin-button {
+  .inputField::-webkit-outer-spin-button,
+  .inputField::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
   
-  .input_field[type=number] {
+  .inputField[type=number] {
     -moz-appearance: textfield;
   }
   .swal-wide{
