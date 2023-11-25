@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { io } from 'socket.io-client'
 
 import axios from 'axios'
 
@@ -31,6 +32,8 @@ ChartJS.register(
 
 const MainPage = () => {
     const baseURL = "http://localhost:4444/db/cryptos_last"
+    const socket = io('http://localhost:5555/')
+    socket.connect()
     let data = ""
 
     // Stored request response
@@ -46,6 +49,11 @@ const MainPage = () => {
             setPost(data)
         })
     }, [])
+
+    socket.once("data", (response) => {
+        let data = response
+        setPost(data)
+    })
 
     let coinsFalse=new Object()
     
