@@ -18,9 +18,9 @@ const Menu = () => {
             <div className='row'>
                 <div className='col-auto co-sm-2 d-flex flex-column justify-content-between min-vh100 menu'>
                     <div>
-                        <a className='text-decoration-none ms-4 d-flex align-items-center text-white d-none d-sm-inline'>
-                            <img src={logo}/>
-                        </a>
+                        <div className='text-decoration-none ms-4 d-flex align-items-center text-white d-none d-sm-inline'>
+                            <img src={logo} alt="Logo"/>
+                        </div>
                         <hr className='text-white d-none d-sm-block'></hr>
                         <ul className="nav nav-pills flex-column" id='parentM'>
                             <li className="nav-item text-white my-1">
@@ -36,7 +36,7 @@ const Menu = () => {
                                 </Link>
                             </li>
                             <li className="nav-item text-white my-1">
-                                <a href="#" className="nav-link " aria-current="page">
+                                <a className="nav-link " aria-current="page">
                                     <i className='bi bi-cart-fill'></i>
                                     <span className='ms-2 text-white'>Sell Crypto</span>
                                 </a>

@@ -17,7 +17,7 @@ const Login = () => {
         <div className='bodyLogin'>
              <form className="form_main">
                 <div className="logo">
-                    <img src={logo}></img>
+                    <img src={logo} alt="Logo"></img>
                 </div>
                 <p className="heading">Login to Na'vi</p>
                 {/*Redirect to Main Page */}
