@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { io } from 'socket.io-client'
 
 import axios from 'axios'
 
@@ -30,7 +31,9 @@ ChartJS.register(
 )
 
 const MainPage = () => {
-    const baseURL = "http://localhost:4444/db/cryptos_last"
+    const baseURL = "https://navi-cryptos.azurewebsites.net/db/cryptos_last"
+    const socket = io('https://navi-socket.azurewebsites.net:3001/')
+    socket.connect()
     let data = ""
 
     // Stored request response
@@ -38,11 +41,19 @@ const MainPage = () => {
 
     // GET request
     React.useEffect(() => {
-        axios.get(baseURL).then((response) => {
+        let user = JSON.parse(sessionStorage.getItem('msal.token.keys.493fd410-634b-4cce-a120-fc0b5b5a0ff5'));
+        let idTokenP=JSON.parse(sessionStorage.getItem(user.idToken));
+        const token=idTokenP.secret
+        axios.get(baseURL, { headers: {"Authorization" : `Bearer ${token}`} }).then((response) => {
             data = response.data
             setPost(data)
         })
     }, [])
+
+    socket.once("data", (response) => {
+        let data = response
+        setPost(data)
+    })
 
     let coinsFalse=new Object()
     
@@ -78,9 +89,9 @@ const MainPage = () => {
 
     // Checkbox per coin 
     const cryptos = post[0].cryptocurrencies.map((coin) => (
-        <label class="checkbox-label" key={coin.name}>
-            <input type="checkbox" class="checkbox" value={coin.name} id={coin.name} onChange={handleOnCheckbox}/>
-            <div class="svg-icon">
+        <label className="checkboxLabel" key={coin.name}>
+            <input type="checkbox" className="checkbox" value={coin.name} id={coin.name} onChange={handleOnCheckbox}/>
+            <div className="svgIcon">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="1em"
@@ -91,7 +102,7 @@ const MainPage = () => {
                     ></path> 
                 </svg>
             </div>
-            <span class="containerCheckbox"></span>
+            <span className="containerCheckbox"></span>
             {coin.name}
         </label>
     ))
@@ -143,14 +154,14 @@ const MainPage = () => {
     }
 
     return (
-        <div class='component-specific'>
-            <div class='title'>
+        <div className='componentSpecific'>
+            <div className='title'>
                 <h1>Top 10 cryptos today</h1>
             </div>
-            <div class='cryptos'>
+            <div className='cryptos'>
                 {cryptos}
             </div>
-            <div class="chart" >
+            <div className="chart" >
                 <Bar data={my_data} options={my_options}></Bar>
             </div>
         </div>

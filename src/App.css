@@ -8,15 +8,15 @@ body {
   background-attachment: fixed;
 }
 
-body {
-  padding-top: 20px;
+.bodyLogin {
+  height: 100vh;
   user-select: none;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.component-specific {
+.componentSpecific {
   width: 1350px;
   height: 590px;
   padding-top: 20px;
@@ -26,3 +26,17 @@ body {
   justify-content: flex-start;
   align-items: center;
 }
+
+.componentSpecificWallet {
+  width: 1350px;
+  height: 590px;
+  padding-top: 20px;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: auto auto auto 100px;
+  
+}
+

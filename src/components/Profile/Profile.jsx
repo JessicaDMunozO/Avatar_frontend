@@ -3,6 +3,7 @@ import React from 'react'
 import axios from 'axios'
 
 import '../../components/Profile/Profile.css'
+import PropTypes from 'prop-types'
 
 /**
  * Renders information about the user obtained from MS Graph
@@ -10,7 +11,7 @@ import '../../components/Profile/Profile.css'
  */
 const Profile = (props) => {
     const email = props.graphData.userPrincipalName
-    const baseURL = "http://localhost:4444/db/user/" + email
+    const baseURL = "https://navi-cryptos.azurewebsites.net/db/user/" + email
     let data = ""
 
     // Stored request response
@@ -18,7 +19,10 @@ const Profile = (props) => {
 
     // GET request
     React.useEffect(() => {
-        axios.get(baseURL).then((response) => {
+        let user = JSON.parse(sessionStorage.getItem('msal.token.keys.493fd410-634b-4cce-a120-fc0b5b5a0ff5'));
+        let idTokenP=JSON.parse(sessionStorage.getItem(user.idToken));
+        const token=idTokenP.secret
+        axios.get(baseURL, { headers: {"Authorization" : `Bearer ${token}`} }).then((response) => {
             data = response.data
             setPost(data)
         })
@@ -27,14 +31,14 @@ const Profile = (props) => {
     if (!post) return null
 
     return (
-        <div class="e-card playing">
-            <div class="image"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
+        <div className="e-card playing">
+            <div className="image"></div>
+            <div className="wave"></div>
+            <div className="wave"></div>
+            <div className="wave"></div>
 
 
-            <div class="infotop">
+            <div className="infotop">
 
 
                 <path fill="currentColor" d="M19.4133 4.89862L14.5863 2.17544C12.9911 1.27485 11.0089 1.27485 9.41368 2.17544L4.58674
@@ -67,5 +71,11 @@ const Profile = (props) => {
         </div>
     )
 }
+Profile.propTypes={
+    graphData: PropTypes.shape({     
+        userPrincipalName: PropTypes.string.isRequired, 
+        displayName: PropTypes.string.isRequired 
+    }).isRequired
 
+}
 export default Profile
