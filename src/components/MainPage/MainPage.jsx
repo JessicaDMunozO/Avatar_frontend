@@ -31,8 +31,8 @@ ChartJS.register(
 )
 
 const MainPage = () => {
-    const baseURL = "http://localhost:4444/db/cryptos_last"
-    const socket = io('http://localhost:5555/')
+    const baseURL = "https://navi-cryptos.azurewebsites.net/db/cryptos_last"
+    const socket = io('https://navi-socket.azurewebsites.net:3001/')
     socket.connect()
     let data = ""
 

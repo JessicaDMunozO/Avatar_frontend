@@ -14,7 +14,7 @@ const Payments =  (props) => {
     let {offerId}=useParams()
     const history = useHistory();
     const showSwal = async () => {
-        const baseURL = "http://localhost:4444/db/offers/buy"
+        const baseURL = "https://navi-cryptos.azurewebsites.net/db/offers/buy"
         let email = props.graphData.userPrincipalName
         let user = JSON.parse(sessionStorage.getItem('msal.token.keys.493fd410-634b-4cce-a120-fc0b5b5a0ff5'));
         let idTokenP=JSON.parse(sessionStorage.getItem(user.idToken));

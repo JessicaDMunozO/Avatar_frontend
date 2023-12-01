@@ -14,7 +14,7 @@ import PropTypes from 'prop-types'
  */
 const Wallet = (props) => {
     const email = props.graphData.userPrincipalName
-    const baseURL = "http://localhost:4444/db/user/" + email + "/balance"
+    const baseURL = "https://navi-cryptos.azurewebsites.net/db/user/" + email + "/balance"
     let data = ""
 
     // Stored request response

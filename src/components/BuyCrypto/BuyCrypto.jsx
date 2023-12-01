@@ -11,7 +11,7 @@ import PropTypes from 'prop-types'
  * @param props 
  */
 const BuyCrypto = (props) => {
-    const baseURL = "http://localhost:4444/db/offers"
+    const baseURL = "https://navi-cryptos.azurewebsites.net/db/offers"
 
     // Stored request response
     const [post, setPost] = React.useState(null)

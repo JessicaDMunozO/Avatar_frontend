@@ -11,7 +11,7 @@ import PropTypes from 'prop-types'
  */
 const Profile = (props) => {
     const email = props.graphData.userPrincipalName
-    const baseURL = "http://localhost:4444/db/user/" + email
+    const baseURL = "https://navi-cryptos.azurewebsites.net/db/user/" + email
     let data = ""
 
     // Stored request response
