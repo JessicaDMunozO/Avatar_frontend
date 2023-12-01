@@ -116,10 +116,8 @@
   .purchaseBtnAccept {
     height: 45px;
     width: 160px;
-    background: #F2F2F2;
     border-radius: 11px;
     border: 0;
-    outline: none;
     color: #ffffff;
     font-size: 13px;
     font-weight: 700;
@@ -139,10 +137,8 @@
   .purchaseBtnCancel {
     height: 45px;
     width: 160px;
-    background: #F2F2F2;
     border-radius: 11px;
     border: 0;
-    outline: none;
     color: #ffffff;
     font-size: 13px;
     font-weight: 700;
