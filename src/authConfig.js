@@ -14,7 +14,7 @@ export const msalConfig = {
     auth: {
         clientId: "493fd410-634b-4cce-a120-fc0b5b5a0ff5",
         authority: "https://login.microsoftonline.com/e9546702-603f-498b-b277-9e577f7d4f15",
-        redirectUri: "http://localhost:3000/mainPage"
+        redirectUri: "https://navi-broker.azurewebsites.net/mainPage"
     },
     cache: {
         cacheLocation: "sessionStorage", // This configures where your cache will be stored
